@@ -1,0 +1,19 @@
+
+*{
+    /* The CSS box-sizing property allows us to include the padding and border in an element's total width and height.*/
+    box-sizing: border-box;
+}
+body{
+    background-color:  #99ceff;
+    margin: 5%;
+    color: black;
+}
+.topnav{
+    height: 5%;
+    width: 100%;
+
+    background-color: navy;
+    position: sticky;
+
+
+}
