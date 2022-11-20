@@ -112,3 +112,42 @@ body{
 .board > [data-state="marked"] {
     background-color: yellow;
 }
+/*page content*/
+.content{
+    text-align: center;
+    padding: 1%;
+
+}
+/*title*/
+.content h1{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-top: 5vh;
+    position: relative;
+    display: inline-flex;
+    width: max-content;
+    letter-spacing: 2px;
+}
+.subtitle{
+    font-size: clamp(1rem, 1.4vw, 3rem);
+    opacity: 75;
+    transform: translateY(3rem);
+
+}
+@keyframes blinking {
+    0% {
+      background-color: #A7C957;
+  
+    }
+    100% {
+      background-color: black;
+  
+    }
+  }
+  #blink {
+      margin: auto;
+
+      width: clamp(38rem, 10vw, 50rem);
+      height: clamp(0.5em, 0.5vw, 2rem);
+      animation: blinking 2s infinite;
+  }
