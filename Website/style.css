@@ -1,19 +1,71 @@
 
 *{
     /* The CSS box-sizing property allows us to include the padding and border in an element's total width and height.*/
-    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'jost';
+    text-decoration: none;
 }
 body{
-    background-color:  #99ceff;
-    margin: 5%;
+    /*Setting of the background colour as well as the margin and font colour*/
+    background-color:  #A7C957;
+    margin: 0;
     color: black;
 }
-.topnav{
-    height: 5%;
+/*banner*/
+.banner{
     width: 100%;
-
-    background-color: navy;
-    position: sticky;
-
-
+    height: 5vh;
+    background-color: #386641;
+    display: table;
+}
+.banner h1{
+    width: 10%;
+    position: relative;
+    text-align: left;
+    padding-left: 1%;
+    display: table-cell;
+    color: #F2E8CF;
+    font-size: 250%;
+    font-family: 'caveat', cursive;
+    cursor: pointer;
+}
+.navbar{
+    width: 85%;
+    margin: auto;
+    padding: 1vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.navbar a{
+    text-decoration: none;
+}
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 10px;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: #F2E8CF;
+    font-size: 120%;
+}
+.navbar ul li a:hover{
+    color: #BC4749;
+}
+.navbar ul li::after{
+    content: '';
+    height: 1px;
+    width: 0;
+    background: #F2E8CF;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
 }
