@@ -7,14 +7,15 @@ const TILE_STATES = {
     NUMBER: "number",
     MARKED: "marked",
   }
+var minePositions
 
 export function createGrid(gridSize, mineCount) {
-    // var minePositions = getMinePositions(gridSize, mineCount)
+    minePositions = getMinePositions(gridSize, mineCount)
     var grid = []
     //creating the grid in its x and y axis
-    for (let x = 0; x < gridSize; x++) {
+    for (let y = 0; y < gridSize; y++) {
         var row = []
-        for (let y = 0; y < gridSize; y++) {
+        for (let x = 0; x < gridSize; x++) {
             //creates a div for each tile and defaults it to a hidden state
             const element = document.createElement("div") 
             element.dataset.state = TILE_STATES.HIDDEN
@@ -70,5 +71,19 @@ function getMinePositions(gridSize, mineCount) {
         // }
         positions.push(position)
     }
+    console.log(positions)
     return positions
+}
+
+export function checkMine(tile) {
+    //checks if the tile is not revealed or flagged
+    if (tile.status == TILE_STATES.HIDDEN) {
+        //checks grid coordinates to see if it is a mine
+        for (let i = 0; i < minePositions.length; i++) {
+            if (tile.x == minePositions[i].x && tile.y == minePositions[i].y) {
+                tile.status = TILE_STATES.MINE
+            }
+            
+        }
+    }
 }

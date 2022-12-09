@@ -1,11 +1,11 @@
 //display/UI
 
 import { 
-    createGrid, markTile, revealTile
+    createGrid, markTile, revealTile, checkMine
 } from "./minesweeper.js";
 
 var gridSize = 9
-var mineCount = 2
+var mineCount = 10
 
 //console.log(createGrid(gridSize, mineCount))
 
@@ -18,6 +18,7 @@ board.forEach(row => {
         boardElement.append(tile.element)
         //listens for a click to change the state
         tile.element.addEventListener("click", () => {
+            checkMine(tile)
             revealTile(tile)
         })
         //listens for right click to mark a tile
