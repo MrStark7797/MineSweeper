@@ -77,6 +77,10 @@ body{
 
 .board {
     display: inline-grid;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 0px;
     grid-template-columns: repeat(var(--size), 60px);
     grid-template-rows: repeat(var(--size), 60px);
@@ -150,4 +154,52 @@ body{
       width: clamp(38rem, 10vw, 50rem);
       height: clamp(0.5em, 0.5vw, 2rem);
       animation: blinking 2s infinite;
+}
+
+.dropbtn {
+    background-color: #5c8644;
+    color: #F2E8CF;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+    top: 10%;
+    left: 30%;
+    transform: translate(-50%, 0%);
+}
+
+/* Dropdown Content (Hidden by Default)*/ 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5c8644;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
   }
