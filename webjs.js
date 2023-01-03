@@ -19,7 +19,7 @@ board.forEach(row => {
         //listens for a click to change the state
         tile.element.addEventListener("click", () => {
             checkMine(tile)
-            revealTile(tile)
+            revealTile(board, tile)
         })
         //listens for right click to mark a tile
         tile.element.addEventListener("contextmenu", () => {

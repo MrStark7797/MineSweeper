@@ -39,11 +39,13 @@ export function createGrid(gridSize, mineCount) {
     return grid
 }
 
-export function revealTile(tile) {
+export function revealTile(board, tile) {
     //checks if the tile can be revealed or not
     if (tile.status != TILE_STATES.HIDDEN) return
 
     tile.status = TILE_STATES.NUMBER
+
+    checkAdjacent(board, tile)
 }
 
 export function markTile(tile) {
@@ -65,13 +67,10 @@ function getMinePositions(gridSize, mineCount) {
             y: Math.floor(Math.random() * gridSize)
         }
 
-
-        // if (!positions.some(positionMatch.bind(null, position))) {
-        //     positions.push(position)
-        // }
-        positions.push(position)
+        if (!(position in positions)) {
+            positions.push(position)
+        }
     }
-    console.log(positions)
     return positions
 }
 
@@ -83,7 +82,22 @@ export function checkMine(tile) {
             if (tile.x == minePositions[i].x && tile.y == minePositions[i].y) {
                 tile.status = TILE_STATES.MINE
             }
-            
+        }
+    }
+}
+
+function checkAdjacent(board, tile) {
+    // for (board[tile.y][tile.x])
+    let row_limit = board.length
+    if(row_limit > 0){
+        let column_limit = board[0].length
+        for(let x = Math.max(0, tile.x-1); x <= Math.min(tile.x+1, row_limit); x++){
+            for(let y = Math.max(0, tile.y-1); y <= Math.min(tile.y+1, column_limit); y++){
+                if(x != tile.x || y != tile.y){
+                    console.log (board[x][y])
+                    revealTile(board, board[x][y])
+                }
+            }
         }
     }
 }
