@@ -154,9 +154,18 @@ body{
       width: clamp(38rem, 10vw, 50rem);
       height: clamp(0.5em, 0.5vw, 2rem);
       animation: blinking 2s infinite;
-  }
+}
 
-/*drop down*/
+.dropbtn {
+    background-color: #5c8644;
+    color: #F2E8CF;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
 .dropdown{
     position: relative;
     display: inline-block;
@@ -165,22 +174,7 @@ body{
     transform: translate(-50%, 0%);
 }
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #386641;
-}
-
-/* Dropdown Button */
-.dropbtn {
-    background-color: #5c8644;
-    color: #F2E8CF;
-    padding: 50px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-
-/* Dropdown Content (Hidden by Default) */
+/* Dropdown Content (Hidden by Default)*/ 
 .dropdown-content {
     display: none;
     position: absolute;
@@ -197,9 +191,15 @@ body{
     text-decoration: none;
     display: block;
 }
-/* Show the dropdown menu on hover */
-.dropdown:hover, .dropdown-content {
-    display: block;
-}
-  
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
 
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
