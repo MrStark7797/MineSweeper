@@ -45,7 +45,7 @@ export function revealTile(board, tile) {
 
     tile.status = TILE_STATES.NUMBER
 
-    checkAdjacent(board, tile)
+    // checkAdjacent(board, tile)
 }
 
 export function markTile(tile) {
@@ -87,15 +87,16 @@ export function checkMine(tile) {
 }
 
 function checkAdjacent(board, tile) {
-    // for (board[tile.y][tile.x])
     let row_limit = board.length
     if(row_limit > 0){
         let column_limit = board[0].length
         for(let x = Math.max(0, tile.x-1); x <= Math.min(tile.x+1, row_limit); x++){
             for(let y = Math.max(0, tile.y-1); y <= Math.min(tile.y+1, column_limit); y++){
                 if(x != tile.x || y != tile.y){
-                    console.log (board[x][y])
-                    revealTile(board, board[x][y])
+                    if (board[x][y].status == TILE_STATES.HIDDEN){
+                        console.log (board[x][y])
+                        revealTile(board, board[x][y])
+                    }
                 }
             }
         }
