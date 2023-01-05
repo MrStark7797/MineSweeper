@@ -9,32 +9,7 @@ const EASY = {gridSize: 5, mineCount: 5}
 const MED = {gridSize: 9, mineCount: 10}
 const HARD = {gridSize: 15, mineCount: 40}
 
-
-
-var gridSize = 9
-var mineCount = 10
-
-// var board = createGrid(gridSize, mineCount)
-// const boardElement = document.querySelector('.board')
-
-// //places each tile inside of the board div
-// board.forEach(row => {
-//     row.forEach(tile => {
-//         boardElement.append(tile.element)
-//         //listens for a click to change the state
-//         tile.element.addEventListener("click", () => {
-//             checkMine(tile)
-//             revealTile(board, tile)
-//         })
-//         //listens for right click to mark a tile
-//         tile.element.addEventListener("contextmenu", () => {
-//             markTile(tile)
-//         })
-//     })
-// })
-
-// //setting the board to be the correct size for the grid
-// boardElement.style.setProperty("--size", gridSize)
+let lastMode = EASY
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -56,9 +31,16 @@ window.onclick = function(event) {
   }
 }
 // run when reloading
-function reload(){
-  var board = createGrid(gridSize, mineCount)
+function reload(difficulty=EASY){
+  lastMode = difficulty
+  var board = createGrid(difficulty.gridSize, difficulty.mineCount)
   const boardElement = document.querySelector('.board')
+
+  var child = boardElement.lastElementChild
+  while (child) {
+    boardElement.removeChild(child)
+    child = boardElement.lastElementChild
+}
 
   //places each tile inside of the board div
   board.forEach(row => {
@@ -77,7 +59,13 @@ function reload(){
   })
 
   //setting the board to be the correct size for the grid
-  boardElement.style.setProperty("--size", gridSize)
+  boardElement.style.setProperty("--size", difficulty.gridSize)
 }
 
-document.getElementById("reload").onclick = reload
+document.getElementById("reload").onclick = function() {reload(lastMode)}
+
+document.getElementById("easy").onclick = function() {reload(EASY)}
+document.getElementById("med").onclick = function() {reload(MED)}
+document.getElementById("hard").onclick = function() {reload(HARD)}
+
+reload()
