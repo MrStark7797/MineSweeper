@@ -9,6 +9,7 @@ const EASY = {gridSize: 5, mineCount: 5}
 const MED = {gridSize: 9, mineCount: 10}
 const HARD = {gridSize: 15, mineCount: 40}
 
+//allows the reload button to know what is currently being used
 let lastMode = EASY
 
 /* When the user clicks on the button,
@@ -36,11 +37,12 @@ function reload(difficulty=EASY){
   var board = createGrid(difficulty.gridSize, difficulty.mineCount)
   const boardElement = document.querySelector('.board')
 
+  //removing board parts from a previous go
   var child = boardElement.lastElementChild
   while (child) {
     boardElement.removeChild(child)
     child = boardElement.lastElementChild
-}
+  }
 
   //places each tile inside of the board div
   board.forEach(row => {
@@ -62,6 +64,7 @@ function reload(difficulty=EASY){
   boardElement.style.setProperty("--size", difficulty.gridSize)
 }
 
+//buttons
 document.getElementById("reload").onclick = function() {reload(lastMode)}
 
 document.getElementById("easy").onclick = function() {reload(EASY)}
